@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+
+require 'tailwind_buddy'
+puts TailwindBuddy.hi(ARGV[0])
