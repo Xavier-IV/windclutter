@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+
+require 'tail_draft'
+puts TailDraft::CLI.start(ARGV)
