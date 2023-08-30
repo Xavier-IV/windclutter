@@ -65,3 +65,8 @@ class="card"
 
 Done!
 ```
+
+## Contributing
+
+Take a look into:
+https://github.com/Xavier-IV/tail_draft/wiki/Developer
