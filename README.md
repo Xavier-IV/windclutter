@@ -8,14 +8,15 @@ Helping you stay focused and develop faster with your project.
 
 ## Concept
 
+### 1 - Basic Cleanup
 ```bash
 # standard button
-$ tailwind_buddy border rounded-md px-4 py-2
+$ tailwind_buddy -n border rounded-md px-4 py-2
 
 # standard card
-$ tailwind_buddy border rounded-md bg-white
+$ tailwind_buddy -n border rounded-md bg-white
 
-$ tailwind_buddy organize
+$ tailwind_buddy --organize
 [1/2] What do you want to do with this class?
 'border rounded-md px-4 py-2'
 name: .btn
@@ -41,4 +42,26 @@ Generated Output
 .card {
     @apply border rounded-md bg-white;
 }
+```
+
+### 2 - Guided cleanup
+
+```bash
+$ tailwind_buddy guided
+
+[1/2] Cleanup progress
+1. Global find this in your project:
+class="border rounded-md px-4 py-2"
+
+2. Replace with:
+class="btn"
+
+[2/2] Cleanup progress
+1. Global find this in your project:
+class="border rounded-md bg-white"
+
+2. Replace with:
+class="card"
+
+Done!
 ```
