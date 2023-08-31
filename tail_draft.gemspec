@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |s|
   s.name = 'tail_draft'
-  s.version = '0.0.0'
+  s.version = '0.0.1'
   s.summary = 'Quickly develop with TailwindCSS without worries.'
   s.description = 'Your buddy to skyrocket your development with TailwindCSS.'
   s.authors = ['Zafranudin Zafrin']
