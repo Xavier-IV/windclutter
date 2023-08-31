@@ -10,6 +10,6 @@ Gem::Specification.new do |s|
   s.files = Dir['{lib}/**/*.rb', 'bin/*', 'test/**/*.rb', 'LICENSE', '*.md']
   s.homepage = 'https://rubygems.org/gems/tailwind_buddy'
   s.license = 'MIT'
-  s.required_ruby_version = '>= 2.6.0'
+  s.required_ruby_version = '>= 2.7.0'
   s.executables << 'tail_draft'
 end
