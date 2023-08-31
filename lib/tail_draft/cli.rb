@@ -4,10 +4,13 @@ require 'thor'
 require 'fileutils'
 require 'tail_draft/processor'
 require 'tail_draft/util/generator'
+require 'tail_draft/util/file_handler'
+require 'tail_draft/util/config'
 
 module TailDraft
   # CLI implementation for tail_draft
   class CLI < Thor
+    include TailDraft::Util
     attr_reader :config_folder
 
     option :name
@@ -17,12 +20,24 @@ module TailDraft
       super
     end
 
+    # Install the proper configuration
+    desc 'install', 'Perform initial setup for tail_draft'.green
+    def install
+      FileHandler.init_config
+    end
+
     # Init your project with tail_draft
     #
     #    TailDraft::CLI.init(<project_name>)
-    desc 'init PROJECT_NAME', 'The name of your project'
+    desc 'init PROJECT_NAME', 'The name of your project'.green
     def init(name)
-      create_project(name)
+      FileHandler.create_project(name)
+      puts 'Successfully created!'.green
+    end
+
+    desc 'list-projects', 'List of projects'.green
+    def list_projects
+      FileHandler.list_projects
     end
 
     # Draft the list of classes
@@ -31,17 +46,26 @@ module TailDraft
     desc 'draft CLASS_NAMES', 'Provide a list of class'
     def draft(*class_names)
       name = options[:name]
-      name = TailDraft::Util::Generator.random_class if name.to_s.empty?
+      name = Generator.random_class if name.to_s.empty?
 
       classes = TailDraft::Processor.sort(class_names)
       TailDraft::Processor.build_single(name, classes)
     end
 
-    private
+    desc 'use PROJECT_NAME', 'Use the project, automatically create one if not exists yet.'
+    def use(project_name)
+      unless FileHandler.list_projects.include? project_name
+        FileHandler.create_project(project_name)
+        puts 'No project, we created one instead'.green
+      end
 
-    def create_project(_value)
-      FileUtils.mkdir_p(@config_folder)
-      nil
+      Config.update('active_project', project_name)
+      puts "Using project \"#{project_name}\"".green
+    end
+
+    desc 'uninstall', 'Remove all configurations and project'.red
+    def uninstall
+      FileHandler.uninstall
     end
   end
 end
