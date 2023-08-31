@@ -41,6 +41,14 @@ module TailDraft
           t.split('/tmp/tail_draft/projects/')[1]
         end
       end
+
+      def self.scanners(extension)
+        Dir["#{File.dirname(__FILE__)}/**/*#{extension}"]
+      end
+
+      def self.overwrite(file, content)
+        File.open(file, 'w') { |t| t.puts content }
+      end
     end
   end
 end

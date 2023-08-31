@@ -2,51 +2,40 @@
 
 ## Tail Draft
 
-Spam this buddy with your bulky TailwindCSS class, and sort it out later.
+You created awesome project, it's completed, your users are happy. But now you are left with this question:
 
-## Goal
+> What am I going to do with this TailwindCSS class clutter?
 
-Helping you stay focused and develop faster with your project.
+You know what I'm talking about.
+
+```html
+<div class="border rounded-md px-4 py-2 bg-primary-100">
+    <!-- -->
+</div>
+```
+
+What if we can help you, if not a bit?
+
+```html
+<div class="adkuioqa">
+    <!-- -->
+</div>
+```
+
+We'll cleanup your html files and organize the CSSes. You can then choose what to name them.
+
+`adkuioqa = .btn`
+```
+<div class="btn">
+    <!-- -->
+</div>
+```
 
 ## Concept
 
-### 1 - Basic Cleanup
-```bash
-# standard button
-$ tail_draft draft border rounded-md px-4 py-2
+This is currently in ideation, but me myself are eagerly waiting to try this myself.
 
-$ tail_draft --organize
-[1/1] What do you want to do with this class?
-'border rounded-md px-4 py-2'
-name: .btn
-
-Done!
-Exported to compiled.css
-```
-
-Generated Output
-
-```css
-/* compiled.css */
-.btn {
-    @apply border rounded-md px-4 py-2;
-}
-```
-
-### 2 - Guided cleanup
-
-```bash
-$ tail_draft guided
-
-[1/1] Cleanup progress
-1. Global find this in your project:
-class="border rounded-md px-4 py-2"
-
-2. Replace with:
-class="btn"
-
-Done!
-```
+I have a huge codebase that needs cleanup.
 
 ## Contributing
 

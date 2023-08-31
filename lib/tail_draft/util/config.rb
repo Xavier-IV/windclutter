@@ -6,6 +6,7 @@ require 'yaml'
 
 module TailDraft
   module Util
+    # Config handler
     class Config
       def self.update(key, value)
         return unless config_exists?
