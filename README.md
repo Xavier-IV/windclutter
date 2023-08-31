@@ -1,4 +1,4 @@
-![Test Badge](https://github.com/Xavier-iV/tail_draft/actions/workflows/test.yml/badge.svg)
+![Test Badge](https://github.com/Xavier-iV/tail_draft/actions/workflows/main.yml/badge.svg)
 
 ## Tail Draft
 
