@@ -59,3 +59,4 @@ https://github.com/Xavier-IV/tail_draft/wiki/Developer
 There are some limited alternative that I'm aware of and are still searching:
 
 - [Windi CSS Analyzer](https://windicss.org/features/analyzer.html) (Sunsetting)
+- [Tailwind CSS Analysis](https://github.com/apvarun/tailwindcss-analysis)
