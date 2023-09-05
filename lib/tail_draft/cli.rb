@@ -45,7 +45,6 @@ module TailDraft
     end
 
     desc 'scan', 'Scan directory for classes, default targeting .html'
-
     def scan(target = '.html')
       puts 'Overwriting in progress...'.red unless options[:overwrite].nil?
       collections = []
