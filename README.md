@@ -17,6 +17,13 @@ This tool aim to:
 Once your project grows and ready to for your clients, chances are you are left with
 humongous task of Tailwind CSS cleanup. I call this "ejected" states.
 
+## Installation
+
+```bash
+# requires ruby 2.7 and above
+$ gem install windclutter
+```
+
 ## In Action
 
 ```html
