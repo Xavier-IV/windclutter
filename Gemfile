@@ -2,8 +2,6 @@
 
 source 'https://rubygems.org'
 
-gem 'thor', '~> 1.2'
-
 gem 'yaml', '~> 0.2.1'
 
 gem 'fileutils', '~> 1.7'

@@ -8,7 +8,7 @@ GEM
     fileutils (1.7.1)
     json (2.6.3)
     language_server-protocol (3.17.0.3)
-    minitest (5.19.0)
+    minitest (5.20.0)
     parallel (1.23.0)
     parser (3.2.2.3)
       ast (~> 2.4.1)
@@ -33,7 +33,6 @@ GEM
     rubocop-ast (1.29.0)
       parser (>= 3.2.1.0)
     ruby-progressbar (1.13.0)
-    thor (1.2.2)
     unicode-display_width (2.4.2)
     yaml (0.2.1)
 
@@ -48,7 +47,6 @@ DEPENDENCIES
   minitest (~> 5.19)
   rake (~> 13.0)
   rubocop (~> 1.56)
-  thor (~> 1.2)
   yaml (~> 0.2.1)
 
 BUNDLED WITH
