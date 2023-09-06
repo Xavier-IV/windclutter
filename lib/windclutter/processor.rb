@@ -13,7 +13,7 @@ module WindClutter
 
     def self.build_single(name, classes)
       <<~OUTPUT
-        #{name} {
+        .#{name} {
           @apply #{classes.join(' ')};
         }
       OUTPUT

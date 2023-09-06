@@ -4,6 +4,7 @@ GEM
     ast (2.4.2)
     base64 (0.1.1)
     colorize (1.1.0)
+    dry-cli (1.0.0)
     fileutils (1.7.1)
     json (2.6.3)
     language_server-protocol (3.17.0.3)
@@ -42,6 +43,7 @@ PLATFORMS
 
 DEPENDENCIES
   colorize (~> 1.1)
+  dry-cli (~> 1.0)
   fileutils (~> 1.7)
   minitest (~> 5.19)
   rake (~> 13.0)

@@ -4,9 +4,10 @@ module WindClutter
   module Util
     # Generator helper
     class Generator
-      def self.random_class
+      def self.random_class(prefixed: true)
         random = [*'A'..'Z'].sample(10).join.downcase
-        "windclutter:#{random}"
+        "windclutter:#{random}" if prefixed
+        random
       end
     end
   end

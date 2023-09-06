@@ -1,5 +1,8 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
-require 'windclutter'
-puts WindClutter::CLI.start(ARGV)
+require 'dry/cli'
+
+require 'windclutter/cli/core'
+
+Dry::CLI.new(WindClutter::CLI::Commands).call
