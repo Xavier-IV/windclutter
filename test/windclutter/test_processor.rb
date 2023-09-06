@@ -5,7 +5,7 @@ require 'windclutter/processor'
 
 class WindClutterProcessorTest < Minitest::Test
   def test_able_to_generate_block
-    result = WindClutter::Processor.build_single('.class', %w[container mx-auto])
+    result = WindClutter::Processor.build_single('class', %w[container mx-auto])
 
     assert_equal ".class {\n  @apply container mx-auto;\n}\n",
                  result
