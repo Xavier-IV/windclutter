@@ -2,35 +2,35 @@
 
 require 'thor'
 require 'fileutils'
-require 'tail_draft/processor'
-require 'tail_draft/util/generator'
-require 'tail_draft/util/file_handler'
-require 'tail_draft/util/config'
+require 'windclutter/processor'
+require 'windclutter/util/generator'
+require 'windclutter/util/file_handler'
+require 'windclutter/util/config'
 
-module TailDraft
-  # CLI implementation for tail_draft
+module WindClutter
+  # CLI implementation for windclutter
   class CLI < Thor
-    include TailDraft::Util
+    include WindClutter::Util
     attr_reader :config_folder
 
     option :name
     option :overwrite
 
     def initialize(args = nil, options = nil, config = nil)
-      @config_folder = '/tmp/tail_draft'
+      @config_folder = '/tmp/windclutter'
       super
     end
 
     # Install the proper configuration
-    desc 'install', 'Perform initial setup for tail_draft'.green
+    desc 'install', 'Perform initial setup for windclutter'.green
 
     def install
       FileHandler.init_config
     end
 
-    # Init your project with tail_draft
+    # Init your project with windclutter
     #
-    #    TailDraft::CLI.init(<project_name>)
+    #    WindClutter::CLI.init(<project_name>)
     desc 'init PROJECT_NAME', 'The name of your project'.green
 
     def init(name)
@@ -49,7 +49,7 @@ module TailDraft
       puts 'Overwriting in progress...'.red unless options[:overwrite].nil?
       collections = []
       FileHandler.scanners(target).map do |file|
-        file_stream = TailDraft::Processor.auto_process(File.read(file), collections)
+        file_stream = WindClutter::Processor.auto_process(File.read(file), collections)
 
         unless options[:overwrite].nil?
           FileHandler.overwrite(file, file_stream)
@@ -60,15 +60,15 @@ module TailDraft
 
     # Draft the list of classes
     #
-    #    TailDraft::CLI.draft(<tailwind class_names>)
+    #    WindClutter::CLI.draft(<tailwind class_names>)
     desc 'draft CLASS_NAMES', 'Provide a list of class'
 
     def draft(*class_names)
       name = options[:name]
       name = Generator.random_class if name.to_s.empty?
 
-      classes = TailDraft::Processor.sort(class_names)
-      TailDraft::Processor.build_single(name, classes)
+      classes = WindClutter::Processor.sort(class_names)
+      WindClutter::Processor.build_single(name, classes)
     end
 
     desc 'use PROJECT_NAME', 'Use the project, automatically create one if not exists yet.'

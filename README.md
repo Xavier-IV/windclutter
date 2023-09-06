@@ -1,6 +1,6 @@
-![Test Badge](https://github.com/Xavier-iV/tail_draft/actions/workflows/main.yml/badge.svg)
+![Test Badge](https://github.com/Xavier-iV/windclutter/actions/workflows/main.yml/badge.svg)
 
-## Tail Draft
+## WindClutter
 
 You created awesome project, it's completed, your users are happy. But now you are left with this question:
 
@@ -51,7 +51,7 @@ I have a lot of codebases that needs cleanup! 🤯
 ## Contributing
 
 Take a look into:
-https://github.com/Xavier-IV/tail_draft/wiki/Developer
+https://github.com/Xavier-IV/windclutter/wiki/Developer
 
 
 ## Great alternative

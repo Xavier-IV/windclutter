@@ -1,14 +1,14 @@
 # frozen_string_literal: true
 
-require 'tail_draft/util/generator'
+require 'windclutter/util/generator'
 
-module TailDraft
-  # Processor for tail_draft
+module WindClutter
+  # Processor for windclutter
   class Processor
-    include TailDraft::Util
+    include WindClutter::Util
 
     def initialize
-      @key_tag = :tail_draft
+      @key_tag = :windclutter
     end
 
     def self.build_single(name, classes)

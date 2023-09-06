@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-module TailDraft
-  # Analyser for tail_draft
+module WindClutter
+  # Analyser for windclutter
   class Analyser
   end
 end
