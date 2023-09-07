@@ -10,11 +10,12 @@ gem 'rake', '~> 13.0'
 
 gem 'colorize', '~> 1.1'
 
-group :development, :test do
-  gem 'minitest', '~> 5.19'
-  gem 'rubocop', '~> 1.56'
-end
-
 gem 'dry-cli', '~> 1.0'
 
-gem 'mocha', '~> 2.1'
+gem 'bump', '~> 0.10.0'
+
+group :development, :test do
+  gem 'minitest', '~> 5.19'
+  gem 'mocha', '~> 2.1'
+  gem 'rubocop', '~> 1.56'
+end
