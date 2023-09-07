@@ -8,7 +8,7 @@ Gem::Specification.new do |s|
   s.authors = ['Zafranudin Zafrin']
   s.email = 'coffee@zafranudin.dev'
   s.files = Dir['{lib}/**/*.rb', '{lib}/template/**/*.yml', 'bin/*', 'test/**/*.rb', 'LICENSE', '*.md']
-  s.homepage = 'https://rubygems.org/gems/tailwind_buddy'
+  s.homepage = 'https://rubygems.org/gems/windclutter'
   s.license = 'MIT'
   s.required_ruby_version = '>= 2.7.0'
   s.executables << 'windclutter'
