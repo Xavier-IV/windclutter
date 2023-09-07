@@ -50,7 +50,40 @@ module WindClutter
             end
 
             Config.update('active_project', name)
+            Config.setup_project(name)
             puts "Using project \"#{name}\"".green
+          end
+        end
+
+        # Show current active project
+        class Current < Dry::CLI::Command
+          include WindClutter::Util
+
+          desc 'Show which current project is actively used.'
+
+          def call(**)
+            project_name = Config.read('active_project')
+
+            print "Currently using: ".green
+            puts project_name
+          end
+        end
+
+        # Dump the generated CSS to the specified file
+        class DumpPath < Dry::CLI::Command
+          include WindClutter::Util
+
+          desc 'Dump path for the generated CSS'
+
+          argument :path, required: true, desc: 'Path of your CSS file to be dump.'
+
+          def call(path:, **)
+            active_project = Config.read('active_project')
+            return puts 'No project specified. Select a project with `use` command.'.yellow if active_project.nil?
+
+            dump_path = File.expand_path(path, Dir.pwd)
+
+            Config.update_project(active_project, 'dump_path', dump_path)
           end
         end
       end

@@ -24,7 +24,7 @@ module WindClutter
       class Install < Dry::CLI::Command
         include WindClutter::Util
 
-        desc 'Initiate first setup for tail_draft'
+        desc 'Initiate first setup for windclutter'
 
         def call(*)
           FileHandler.init_config
@@ -42,14 +42,28 @@ module WindClutter
         end
       end
 
+      # A helper for you to dissect the configuration quickly
+      class Debug < Dry::CLI::Command
+        include WindClutter::Util
+
+        desc 'Debug the configuration of windclutter'
+
+        def call(*)
+          Config.wtf?
+        end
+      end
+
       register 'version', Version, aliases: %w[v -v --version]
       register 'install', Install, aliases: %w[i -i --install]
       register 'uninstall', Uninstall, aliases: %w[u -u --uninstall]
+      register 'debug', Debug, aliases: %w[d -d --debug]
 
       register 'project', aliases: ['p'] do |prefix|
         prefix.register 'init', Commands::Project::Init
         prefix.register 'list', Commands::Project::List
         prefix.register 'use', Commands::Project::Use
+        prefix.register 'current', Commands::Project::Current
+        prefix.register 'dump-path', Commands::Project::DumpPath, aliases: ['-d']
       end
 
       register 'generate', aliases: ['g'] do |prefix|

@@ -17,11 +17,46 @@ module WindClutter
         File.open('/tmp/windclutter/config.yml', 'w') { |f| YAML.dump(config, f) }
       end
 
+      def self.setup_project(name)
+        return unless config_exists?
+
+        config = YAML.load_file('/tmp/windclutter/config.yml')
+
+        config['projects'][name] = {
+          'project_path' => nil,
+          'dump_path' => nil
+        }
+
+        File.open('/tmp/windclutter/config.yml', 'w') { |f| YAML.dump(config, f) }
+      end
+
+      def self.update_project(name, key, value)
+        return unless config_exists?
+
+        config = YAML.load_file('/tmp/windclutter/config.yml')
+        if config['projects'][name].nil?
+          config['projects'][name] = {
+            'project_path' => nil,
+            'dump_path' => nil
+          }
+        end
+        config['projects'][name][key] = value
+
+        File.open('/tmp/windclutter/config.yml', 'w') { |f| YAML.dump(config, f) }
+      end
+
       def self.read(key)
         return unless config_exists?
 
         config = YAML.load_file('/tmp/windclutter/config.yml')
         config[key]
+      end
+
+      def self.wtf?
+        return puts 'No config found.'.red unless config_exists?
+
+        config = YAML.load_file('/tmp/windclutter/config.yml')
+        puts config
       end
 
       def self.config_exists?
