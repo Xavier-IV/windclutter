@@ -38,4 +38,13 @@ namespace :gem do
       sh "gem push #{gem_file}"
     end
   end
+
+  desc 'Clean all built gem.'
+  task :clean do
+    gem_files = Dir.glob('*.gem')
+    Dir.glob('*.gem').each do |gem_file|
+      File.delete(gem_file) if File.exist?(gem_file)
+    end
+    puts "#{gem_files.count} gems cleaned!"
+  end
 end
