@@ -45,6 +45,6 @@ namespace :gem do
     Dir.glob('*.gem').each do |gem_file|
       File.delete(gem_file) if File.exist?(gem_file)
     end
-    puts "#{gem_files.count} gems cleaned!"
+    puts "#{gem_files.count} gem(s) cleaned!"
   end
 end
