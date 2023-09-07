@@ -16,3 +16,5 @@ group :development, :test do
 end
 
 gem 'dry-cli', '~> 1.0'
+
+gem 'mocha', '~> 2.1'

@@ -20,7 +20,7 @@ module WindClutter
           FileUtils.cp(file, '/tmp/windclutter')
         end
 
-        Dir["/tmp/windclutter/*"].each do |file|
+        Dir['/tmp/windclutter/*'].each do |file|
           puts "\t#{file}"
         end
 
@@ -47,6 +47,10 @@ module WindClutter
 
       def self.scanners(extension)
         Dir["#{File.dirname(__FILE__)}/**/*#{extension}"]
+      end
+
+      def self.scan_one(path)
+        File.expand_path(path, Dir.pwd)
       end
 
       def self.overwrite(file, content)

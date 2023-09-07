@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require 'minitest/autorun'
 require 'windclutter/util/generator'
 
 class WindClutterUtilGeneratorTest < Minitest::Test

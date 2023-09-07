@@ -4,6 +4,7 @@ require 'dry/cli'
 require 'windclutter/util/file_handler'
 require 'windclutter/cli/commands/project'
 require 'windclutter/cli/commands/generate'
+require 'windclutter/cli/commands/analysis'
 
 module WindClutter
   module CLI
@@ -49,7 +50,7 @@ module WindClutter
         desc 'Debug the configuration of windclutter'
 
         def call(*)
-          Config.wtf?
+          puts Config.wtf?
         end
       end
 
@@ -64,6 +65,11 @@ module WindClutter
         prefix.register 'use', Commands::Project::Use
         prefix.register 'current', Commands::Project::Current
         prefix.register 'dump-path', Commands::Project::DumpPath, aliases: ['-d']
+        prefix.register 'config', Commands::Project::ConfigUpdate, aliases: ['-c']
+      end
+
+      register 'analysis', aliases: %w[a -a] do |prefix|
+        prefix.register 'file', Commands::Analysis::FilePath, aliases: ['-p']
       end
 
       register 'generate', aliases: ['g'] do |prefix|

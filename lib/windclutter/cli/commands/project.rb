@@ -64,7 +64,7 @@ module WindClutter
           def call(**)
             project_name = Config.read('active_project')
 
-            print "Currently using: ".green
+            print 'Currently using: '.green
             puts project_name
           end
         end
@@ -84,6 +84,25 @@ module WindClutter
             dump_path = File.expand_path(path, Dir.pwd)
 
             Config.update_project(active_project, 'dump_path', dump_path)
+          end
+        end
+
+        # Update config
+        class ConfigUpdate < Dry::CLI::Command
+          include WindClutter::Util
+
+          desc 'Update the config for your project'
+
+          argument :key, required: true, desc: 'Key of your config.'
+          argument :value, required: true, desc: 'Value of your config.'
+
+          def call(key:, value:, **)
+            active_project = Config.read('active_project')
+            return puts 'No project specified. Select a project with `use` command.'.yellow if active_project.nil?
+
+            puts "Updating #{key}:#{value}".green
+
+            Config.update_project(active_project, key, value)
           end
         end
       end
