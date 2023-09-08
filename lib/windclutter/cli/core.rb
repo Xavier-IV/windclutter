@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 require 'dry/cli'
+require 'rubygems'
+require 'bundler/setup'
 require 'windclutter/util/file_handler'
 require 'windclutter/cli/commands/project'
 require 'windclutter/cli/commands/generate'
@@ -17,7 +19,9 @@ module WindClutter
         desc 'Print version'
 
         def call(*)
-          puts '0.0.1'
+          gemspec = Gem::Specification.load('windclutter.gemspec')
+
+          puts gemspec.version.to_s
         end
       end
 
