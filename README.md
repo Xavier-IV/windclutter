@@ -51,33 +51,52 @@ humongous task of Tailwind CSS cleanup.
 
 <hr/>
 
-## Installation
+## Quick Installation
 
 ```bash
 # requires ruby 2.7 and above
 $ gem install windclutter
 
-$ windclutter install
+$ cd your_project
+$ windclutter use
 ```
 
 ## In Action
 
+### 1. Single file analysis
 ```
-$ cd your_project
-
-$ windclutter project use <your_project_name>
 $ windclutter analysis file src/index.html
-```
-
-```html
-<div class="my-class border rounded-md px-4 py-2 bg-primary-100">
-    <!-- -->
-</div>
 ```
 
 ```
 # output
-{"my-class"=>1, "border"=>1, "rounded-md"=>1, "px-4"=>1, "py-2"=>1, "bg-primary-100"=>1}
+
+Analysing src/index.html...
+Done!
+{
+                 "flex" => 3,
+             "flex-col" => 3,
+}
+```
+
+### 2. Project traversal (NEW)
+
+```
+$ windclutter analysis traversal .html
+```
+
+```
+# output
+Analysing .html...
+Traversed 22 .html file(s)... 🎉
+{
+            "flex" => 44,
+        "flex-col" => 31,
+    "items-center" => 30,
+     "text-center" => 21,
+           "gap-2" => 14
+}
+...and 120 more
 ```
 
 ## Bleeding Edge!
