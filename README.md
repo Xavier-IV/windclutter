@@ -63,9 +63,9 @@ $ windclutter use
 
 ## In Action
 
-### 1. Single file analysis
+### 1. Single file analysis `-f`
 ```
-$ windclutter analysis file src/index.html
+$ windclutter analysis -f src/index.html
 ```
 
 ```
@@ -79,14 +79,17 @@ Done!
 }
 ```
 
-### 2. Project traversal (NEW)
+### 2. Project traversal `-t` (NEW)
+
+Provide an option with your file extension, and let it do its magic! 🎉
 
 ```
-$ windclutter analysis traversal .html
+$ windclutter analysis -t .html
 ```
 
 ```
 # output
+
 Analysing .html...
 Traversed 22 .html file(s)... 🎉
 {

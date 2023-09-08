@@ -57,8 +57,8 @@ module WindClutter
         prefix.register 'config', Commands::Project::ConfigUpdate, aliases: ['-c']
       end
 
-      register 'analysis', aliases: %w[a -a] do |prefix|
-        prefix.register 'file', Commands::Analysis::FilePath, aliases: ['-p']
+      register 'analysis', aliases: %w[a] do |prefix|
+        prefix.register 'file', Commands::Analysis::FilePath, aliases: ['-f']
         prefix.register 'traverse', Commands::Analysis::Traverse, aliases: ['-t']
       end
 
