@@ -1,8 +1,7 @@
 # frozen_string_literal: true
 
 require 'dry/cli'
-require 'rubygems'
-require 'bundler/setup'
+require 'windclutter/version'
 require 'windclutter/util/file_handler'
 require 'windclutter/cli/commands/project'
 require 'windclutter/cli/commands/generate'
@@ -15,13 +14,11 @@ module WindClutter
       extend Dry::CLI::Registry
 
       # Print out the version of windclutter
-      class Version < Dry::CLI::Command
+      class ShowVersion < Dry::CLI::Command
         desc 'Print version'
 
         def call(*)
-          gemspec = Gem::Specification.load('windclutter.gemspec')
-
-          puts gemspec.version.to_s
+          puts WindClutter::VERSION
         end
       end
 
@@ -58,7 +55,7 @@ module WindClutter
         end
       end
 
-      register 'version', Version, aliases: %w[v -v --version]
+      register 'version', ShowVersion, aliases: %w[v -v --version]
       register 'install', Install, aliases: %w[i -i --install]
       register 'uninstall', Uninstall, aliases: %w[u -u --uninstall]
       register 'debug', Debug, aliases: %w[d -d --debug]

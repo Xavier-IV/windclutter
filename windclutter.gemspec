@@ -1,8 +1,11 @@
 # frozen_string_literal: true
 
+$:.push File.expand_path("../lib", __FILE__)
+require 'windclutter/version'
+
 Gem::Specification.new do |s|
   s.name = 'windclutter'
-  s.version = '0.0.9'
+  s.version = WindClutter::VERSION
   s.summary = 'Quickly develop with TailwindCSS without worries.'
   s.description = 'Your buddy to skyrocket your development with TailwindCSS.'
   s.authors = ['Zafranudin Zafrin']
