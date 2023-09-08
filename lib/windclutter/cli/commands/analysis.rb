@@ -1,8 +1,11 @@
 # frozen_string_literal: true
 
+require 'awesome_print'
 require 'dry/cli'
 require 'windclutter/analyser'
 require 'windclutter/util/file_handler'
+require 'windclutter/util/collector'
+require 'windclutter/util/sorter'
 require 'windclutter/cli/commands/project'
 require 'windclutter/cli/commands/generate'
 
@@ -12,17 +15,44 @@ module WindClutter
       module Analysis
         # Initiate setup for specified project
         class FilePath < Dry::CLI::Command
+          include WindClutter
           include WindClutter::Util
 
           desc 'Perform CSS analysis of the path'
-          argument :path, aliases: ['-p'], required: true, desc: 'Path of your CSS file to be dump.'
+          argument :file, aliases: ['-f'], required: true, desc: 'Path of your CSS file to be dump.'
 
-          def call(path:, **)
-            puts "Analysing #{path}...".green
+          def call(file:, **)
+            return puts "No file found #{file}".red unless File.file?(file)
 
-            file = File.open(FileHandler.scan_one(path))
+            puts "Analysing #{file}...".yellow
+
+            content = File.open(FileHandler.scan_one(file))
             puts 'Done!'.green
-            puts WindClutter::Analyser.init(file.read)
+            ap Analyser.init(content.read)
+          end
+        end
+
+        # Perform full traversal analysis
+        class Traverse < Dry::CLI::Command
+          include WindClutter
+          include WindClutter::Util
+
+          desc 'Perform full traversal analysis'
+
+          argument :suffix, aliases: ['-s'], required: true, desc: 'Suffix of all files to be traversed.'
+
+          option :full, type: :boolean, alias: '-f', default: false, desc: 'Print out whole classes.'
+
+          option :collect, type: :integer, alias: '-c', default: 5, desc: 'Specify how many of result to collect.'
+
+          def call(suffix:, **options)
+            collect_count = options.fetch(:collect).to_i
+            puts "Analysing #{suffix}...".yellow
+
+            total, scanned, file_count = Analyser.traverse(suffix, collect_count)
+            puts "Traversed #{file_count} #{suffix} file(s)... 🎉".green
+            ap scanned
+            puts "...and #{total - collect_count} more".yellow if total > collect_count
           end
         end
       end

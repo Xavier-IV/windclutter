@@ -70,6 +70,7 @@ module WindClutter
 
       register 'analysis', aliases: %w[a -a] do |prefix|
         prefix.register 'file', Commands::Analysis::FilePath, aliases: ['-p']
+        prefix.register 'traverse', Commands::Analysis::Traverse, aliases: ['-t']
       end
 
       register 'generate', aliases: ['g'] do |prefix|

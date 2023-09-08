@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
+require 'windclutter/util/collector'
 require 'windclutter/util/config'
+require 'windclutter/util/sorter'
+require 'windclutter/util/file_handler'
 
 module WindClutter
   # Analyser for windclutter
@@ -21,12 +24,22 @@ module WindClutter
       content.scan(regex).each do |occurrence|
         cls = occurrence.to_s.match(occurrence_regex)[1].split(' ')
 
-        cls.each do |c|
-          total = collections[c].nil? ? 0 : collections[c]
-          collections[c] = total + 1
-        end
+        cls.each { |k| collect(collections, k, 1) }
       end
-      collections.sort_by { |_, v| -v }.to_h
+      sorter(collections).to_h
+    end
+
+    def self.traverse(suffix, limit)
+      collection = {}
+      scanned = FileHandler.scanners(suffix)
+      scanned.each do |file|
+        init(File.open(file).read).each { |k, v| collect(collection, k, v) }
+      end
+
+      sorted = sorter(collection)
+      result = limit.positive? ? sorted.to_h : sorted.first(limit).to_h
+
+      [sorted.count, result, scanned.count]
     end
   end
 end

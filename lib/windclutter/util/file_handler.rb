@@ -46,7 +46,7 @@ module WindClutter
       end
 
       def self.scanners(extension)
-        Dir["#{File.dirname(__FILE__)}/**/*#{extension}"]
+        Dir["#{Dir.pwd}/**/*#{extension}"]
       end
 
       def self.scan_one(path)

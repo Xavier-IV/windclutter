@@ -2,6 +2,7 @@ GEM
   remote: https://rubygems.org/
   specs:
     ast (2.4.2)
+    awesome_print (1.9.2)
     base64 (0.1.1)
     bump (0.10.0)
     colorize (1.1.0)
@@ -45,6 +46,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  awesome_print (~> 1.9)
   bump (~> 0.10.0)
   colorize (~> 1.1)
   dry-cli (~> 1.0)

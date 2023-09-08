@@ -12,7 +12,9 @@ task default: :test
 
 desc 'Run the Windclutter executable'
 task :windclutter, [:args] do
-  args = ARGV[1..]  # Capture all arguments after the task name
+  ARGV.delete('--')
+  args = ARGV[1..]
+
   begin
     cmd = "ruby -Ilib ./bin/windclutter #{args.join(' ')}"
     sh cmd

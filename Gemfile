@@ -14,6 +14,8 @@ gem 'dry-cli', '~> 1.0'
 
 gem 'bump', '~> 0.10.0'
 
+gem 'awesome_print', '~> 1.9'
+
 group :development, :test do
   gem 'minitest', '~> 5.19'
   gem 'mocha', '~> 2.1'
