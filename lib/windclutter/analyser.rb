@@ -37,7 +37,7 @@ module WindClutter
       end
 
       sorted = sorter(collection)
-      result = limit.positive? ? sorted.to_h : sorted.first(limit).to_h
+      result = limit.positive? ? sorted.first(limit).to_h : sorted.to_h
 
       [sorted.count, result, scanned.count]
     end

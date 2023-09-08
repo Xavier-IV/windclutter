@@ -46,13 +46,16 @@ module WindClutter
           option :collect, type: :integer, alias: '-c', default: 5, desc: 'Specify how many of result to collect.'
 
           def call(suffix:, **options)
-            collect_count = options.fetch(:collect).to_i
+            full = options.fetch(:full)
+            collect_count = full ? 0 : options.fetch(:collect).to_i
             puts "Analysing #{suffix}...".yellow
 
             total, scanned, file_count = Analyser.traverse(suffix, collect_count)
             puts "Traversed #{file_count} #{suffix} file(s)... 🎉".green
             ap scanned
-            puts "...and #{total - collect_count} more".yellow if total > collect_count
+            return unless collect_count.positive? && (total - collect_count).positive?
+
+            puts "...and #{total - collect_count} more".yellow
           end
         end
       end
