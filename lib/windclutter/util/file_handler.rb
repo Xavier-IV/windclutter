@@ -15,6 +15,7 @@ module WindClutter
 
         template = File.expand_path('../../template', File.dirname(__FILE__))
 
+        puts 'First setup of windclutter...'.green
         puts 'Created the following files:'
         Dir["#{template}/*.yml"].each do |file|
           FileUtils.cp(file, '/tmp/windclutter')

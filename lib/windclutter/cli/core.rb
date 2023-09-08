@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require 'awesome_print'
 require 'dry/cli'
 require 'windclutter/version'
 require 'windclutter/util/file_handler'
@@ -22,17 +23,6 @@ module WindClutter
         end
       end
 
-      # Perform initial setup for windclutter
-      class Install < Dry::CLI::Command
-        include WindClutter::Util
-
-        desc 'Initiate first setup for windclutter'
-
-        def call(*)
-          FileHandler.init_config
-        end
-      end
-
       # Uninstallation handler
       class Uninstall < Dry::CLI::Command
         include WindClutter::Util
@@ -51,19 +41,17 @@ module WindClutter
         desc 'Debug the configuration of windclutter'
 
         def call(*)
-          puts Config.wtf?
+          ap Config.wtf?
         end
       end
 
       register 'version', ShowVersion, aliases: %w[v -v --version]
-      register 'install', Install, aliases: %w[i -i --install]
+      register 'use', Commands::Project::Use, aliases: %w[u -u --use]
       register 'uninstall', Uninstall, aliases: %w[u -u --uninstall]
       register 'debug', Debug, aliases: %w[d -d --debug]
 
       register 'project', aliases: ['p'] do |prefix|
-        prefix.register 'init', Commands::Project::Init
         prefix.register 'list', Commands::Project::List
-        prefix.register 'use', Commands::Project::Use
         prefix.register 'current', Commands::Project::Current
         prefix.register 'dump-path', Commands::Project::DumpPath, aliases: ['-d']
         prefix.register 'config', Commands::Project::ConfigUpdate, aliases: ['-c']

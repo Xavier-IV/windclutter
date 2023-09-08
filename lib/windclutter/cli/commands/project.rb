@@ -8,20 +8,6 @@ module WindClutter
   module CLI
     module Commands
       module Project
-        # Initiate setup for specified project
-        class Init < Dry::CLI::Command
-          include WindClutter::Util
-
-          desc 'Setup windclutter for your project'
-
-          argument :name, required: true, desc: 'Name of your project.'
-
-          def call(name:, **)
-            FileHandler.create_project(name)
-            puts 'Successfully created!'.green
-          end
-        end
-
         # List all of created project for windclutter
         class List < Dry::CLI::Command
           include WindClutter::Util
@@ -39,19 +25,20 @@ module WindClutter
 
           desc 'Use the project, automatically create one if not exists yet.'
 
-          argument :name, required: true, desc: 'Name of your project.'
+          argument :name, desc: 'Name of your project.'
 
-          def call(name:, **)
-            return Config.read('active_project') if name.nil?
+          def call(name: nil, **)
+            project_name = name || File.basename(Dir.pwd)
 
-            unless FileHandler.list_projects.include? name
-              FileHandler.create_project(name)
-              puts 'No project, we created one instead'.green
+            FileHandler.init_config unless Config.exists?
+            unless FileHandler.list_projects.include? project_name
+              FileHandler.create_project(project_name)
+              puts 'No project, we created one instead'.yellow
             end
 
-            Config.update('active_project', name)
-            Config.setup_project(name)
-            puts "Using project \"#{name}\"".green
+            Config.update('active_project', project_name)
+            Config.setup_project(project_name)
+            puts "Using project \"#{project_name}\"".green
           end
         end
 

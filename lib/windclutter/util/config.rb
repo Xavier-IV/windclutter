@@ -69,13 +69,7 @@ module WindClutter
       end
 
       def self.exists?
-        unless File.file?('/tmp/windclutter/config.yml')
-          puts 'You have not install windclutter yet'.yellow
-          puts 'To install, run:'
-          puts "\twindclutter install".green
-          return false
-        end
-        true
+        File.file?('/tmp/windclutter/config.yml')
       end
     end
   end
