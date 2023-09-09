@@ -16,7 +16,7 @@ Gem::Specification.new do |s|
   s.required_ruby_version = '>= 2.7.0'
   s.executables << 'windclutter'
 
-  spec.metadata = {
+  s.metadata = {
     'source_code_uri' => 'https://github.com/Xavier-IV/windclutter',
     'rubygems_mfa_required' => 'true'
   }
