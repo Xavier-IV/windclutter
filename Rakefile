@@ -29,6 +29,18 @@ namespace :gem do
     sh 'gem build windclutter.gemspec'
   end
 
+  desc 'Install the gem locally'
+  task :install do
+    gem_file = Dir.glob('*.gem').max_by { |f| File.mtime(f) }
+
+    if gem_file.nil?
+      puts 'No gem file found in the current directory.'
+    else
+      puts "Installing gem locally: #{gem_file}"
+      sh "gem install #{gem_file}"
+    end
+  end
+
   desc 'Push the latest gem that was built.'
   task :push do
     gem_file = Dir.glob('*.gem').max_by { |f| File.mtime(f) }

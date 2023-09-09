@@ -31,6 +31,8 @@ module WindClutter
 
         def call(*)
           FileHandler.uninstall
+
+          puts 'Uninstall completed!'.green
         end
       end
 
@@ -41,7 +43,7 @@ module WindClutter
         desc 'Debug the configuration of windclutter'
 
         def call(*)
-          ap Config.wtf?
+          ap Config.wtf?, indent: -2
         end
       end
 

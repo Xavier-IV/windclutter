@@ -2,6 +2,7 @@
 
 require 'windclutter/analyser'
 require 'windclutter/util/config'
+require 'mocha/minitest'
 
 class WindClutterAnalyserTest < Minitest::Test
   include WindClutter
@@ -12,8 +13,16 @@ class WindClutterAnalyserTest < Minitest::Test
     Config.any_instance.stubs(:exists?).returns(true)
     YAML.stubs(:load_file).with('/tmp/windclutter/config.yml').returns(config_fixture)
 
-    # Config.expects(:read_project).with('test_project', 'class_key').returns('class')
     assert_equal Analyser.init(dummy_content), expected_output
+  end
+
+  def test_able_to_traverse
+    FileHandler.stubs(:scanners).with('.html').returns(['src/index.html'])
+    FileHandler.stubs(:read).returns(dummy_content)
+    Analyser.stubs(:init).returns(expected_output)
+
+    assert_equal Analyser.traverse('.html', 10),
+                 [7, expected_output, 1]
   end
 
   private

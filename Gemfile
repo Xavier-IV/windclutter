@@ -17,7 +17,8 @@ gem 'bump', '~> 0.10.0'
 gem 'awesome_print', '~> 1.9'
 
 group :development, :test do
-  gem 'minitest', '~> 5.19'
-  gem 'mocha', '~> 2.1'
-  gem 'rubocop', '~> 1.56'
+  gem 'minitest', '~> 5.19', require: false
+  gem 'mocha', '~> 2.1', require: false
+  gem 'rubocop', '~> 1.56', require: false
+  gem 'simplecov', '~> 0.22.0', require: false
 end

@@ -33,7 +33,7 @@ module WindClutter
       collection = {}
       scanned = FileHandler.scanners(suffix)
       scanned.each do |file|
-        init(File.open(file).read).each { |k, v| collect(collection, k, v) }
+        init(FileHandler.read(file)).each { |k, v| collect(collection, k, v) }
       end
 
       sorted = sorter(collection)

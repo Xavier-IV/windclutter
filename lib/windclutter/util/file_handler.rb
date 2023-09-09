@@ -32,8 +32,6 @@ module WindClutter
         Dir['/tmp/windclutter'].each do |t|
           FileUtils.rm_rf(t)
         end
-
-        puts 'Uninstall completed!'.green
       end
 
       def self.create_project(value)
@@ -56,6 +54,10 @@ module WindClutter
 
       def self.overwrite(file, content)
         File.open(file, 'w') { |t| t.puts content }
+      end
+
+      def self.read(file)
+        File.open(file).read
       end
     end
   end
