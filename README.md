@@ -1,4 +1,4 @@
-![Test Badge](https://github.com/Xavier-iV/windclutter/actions/workflows/main.yml/badge.svg) [![Gem Version](https://badge.fury.io/rb/windclutter.svg)](https://badge.fury.io/rb/windclutter)
+![Test Badge](https://github.com/Xavier-iV/windclutter/actions/workflows/main.yml/badge.svg) <a href="https://badge.fury.io/rb/windclutter"><img src="https://badge.fury.io/rb/windclutter.svg" alt="Gem Version" height="18"></a>
 
 <div align="center">
   <h1>WindClutter</h1>
