@@ -6,6 +6,7 @@ class WindClutterUtilFileHandlerTest < Minitest::Test
   include WindClutter::Util
 
   def test_it_can_uninstall
+    Dir.stubs(:[]).returns(['/tmp/windclutter'])
     FileUtils.stubs(:rm_rf).times(1)
     FileHandler.uninstall
   end
