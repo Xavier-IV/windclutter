@@ -24,8 +24,8 @@ class WindClutterUtilFileHandlerTest < Minitest::Test
   def test_scanners
     folder = '/project_folder'
     Dir.stubs(:pwd).returns(folder)
-    Dir.stubs(:[]).returns(["#{folder}src/project_name/file.html"])
-    assert_equal FileHandler.scanners('.html'), ["#{folder}src/project_name/file.html"]
+    Dir.stubs(:[]).returns(%W[#{folder}src/project_name/file.html #{folder}src/project_name/file.astro])
+    assert_equal FileHandler.scanners(%w[.html .astro]), %W[#{folder}src/project_name/file.html #{folder}src/project_name/file.astro]
   end
 
   def test_scan_one

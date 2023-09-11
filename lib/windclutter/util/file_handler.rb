@@ -44,8 +44,8 @@ module WindClutter
         end
       end
 
-      def self.scanners(extension)
-        Dir["#{Dir.pwd}/**/*#{extension}"]
+      def self.scanners(suffixes)
+        Dir[*suffixes.map { |s| "#{Dir.pwd}/**/*#{s}" }]
       end
 
       def self.scan_one(path)

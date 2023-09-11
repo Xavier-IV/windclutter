@@ -29,9 +29,9 @@ module WindClutter
       sorter(collections).to_h
     end
 
-    def self.traverse(suffix, limit)
+    def self.traverse(suffixes, limit)
       collection = {}
-      scanned = FileHandler.scanners(suffix)
+      scanned = FileHandler.scanners(suffixes)
       scanned.each do |file|
         init(FileHandler.read(file)).each { |k, v| collect(collection, k, v) }
       end

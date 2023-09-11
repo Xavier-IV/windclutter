@@ -39,7 +39,8 @@ module WindClutter
 
           desc 'Perform full traversal analysis'
 
-          argument :suffix, aliases: ['-s'], required: true, desc: 'Suffix of all files to be traversed.'
+          argument :suffix, aliases: ['-s'], required: true,
+                            desc: 'Suffix of all files to be traversed. Provide multiple with comma separated suffixes.'
 
           option :full, type: :boolean, alias: '-f', default: false, desc: 'Print out whole classes.'
 
@@ -47,10 +48,11 @@ module WindClutter
 
           def call(suffix:, **options)
             full = options.fetch(:full)
+            suffixes = suffix.split(',')
             collect_count = full ? 0 : options.fetch(:collect).to_i
             puts "Analysing #{suffix}...".yellow
 
-            total, scanned, file_count = Analyser.traverse(suffix, collect_count)
+            total, scanned, file_count = Analyser.traverse(suffixes, collect_count)
             puts "Traversed #{file_count} #{suffix} file(s)... 🎉".green
             ap scanned
             return unless collect_count.positive? && (total - collect_count).positive?
