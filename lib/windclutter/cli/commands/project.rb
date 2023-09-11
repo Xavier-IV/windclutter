@@ -38,6 +38,7 @@ module WindClutter
 
             Config.update('active_project', project_name)
             Config.setup_project(project_name)
+            Config.update_project(project_name, 'project_path', Dir.pwd)
             puts "Using project \"#{project_name}\"".green
           end
         end
